@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS game_personajes (
   experience      INT DEFAULT 0,
   exp_weekly      INT DEFAULT 0,
   jenny           BIGINT DEFAULT 0,
-  rank            VARCHAR(5) DEFAULT 'D',
+  `rank`           VARCHAR(5) DEFAULT 'D',
   
   -- Estado y aprobación
   is_active       TINYINT(1) DEFAULT 1,
@@ -42,5 +42,5 @@ CREATE TABLE IF NOT EXISTS game_personajes (
   updated_at      DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   
   INDEX idx_mybb (mybb_uid),
-  INDEX idx_rank (rank)
+  INDEX idx_rank (`rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
