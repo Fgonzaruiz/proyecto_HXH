@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIBLIA DEL SISTEMA — Hunter x Hunter RPG Foro</title>
+<style>
+:root{
+--bg:#09090f;--surface:#111119;--surface2:#1a1a27;--surface3:#222234;
+--border:#252535;--border2:#363650;
+--text:#ededf5;--text2:#7070a0;--text3:#4a4a6a;
+--accent:#a78bfa;--accent2:#7c3aed;
+--nen-e:#15803d;--nen-t:#b45309;--nen-em:#1d4ed8;
+--nen-c:#6d28d9;--nen-m:#b91c1c;--nen-s:#831843;
+--jenny:#f59e0b;--bounty:#ef4444;--dark:#0d0010;
+--keep:#2a9d8f;--warn:#e9c46a;--danger:#e63946;
+--code:#c9d1d9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+background:var(--bg);color:var(--text);line-height:1.6;font-size:14px}
+
+.header{background:linear-gradient(135deg,#09090f 0%,#0d0018 40%,#0a0014 100%);
+padding:60px 40px;text-align:center;border-bottom:1px solid var(--border2);
+position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;inset:0;
+background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,0.15) 0%,transparent 70%);pointer-events:none}
+.header h1{font-size:2.4em;font-weight:900;letter-spacing:-1px;
+background:linear-gradient(135deg,#fff 0%,var(--accent) 60%,var(--nen-s) 100%);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .sub{color:var(--text2);margin-top:10px;font-size:1em}
+.header .meta{display:flex;gap:30px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.header .meta .m{text-align:center}
+.header .meta .m .n{font-size:2em;font-weight:800}
+.header .meta .m .l{font-size:0.75em;color:var(--text2)}
+.m.nen .n{color:var(--accent)}
+.m.tables .n{color:var(--jenny)}
+.m.rules .n{color:var(--keep)}
+.m.sprints .n{color:var(--nen-e)}
+
+.nav{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);
+padding:10px 24px;display:flex;gap:6px;flex-wrap:wrap;z-index:50;backdrop-filter:blur(10px)}
+.nav a{color:var(--text2);text-decoration:none;padding:4px 10px;border-radius:6px;
+font-size:0.82em;font-weight:500;transition:0.2s}
+.nav a:hover{color:var(--text);background:var(--surface2)}
+
+.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+
+.section{margin-bottom:60px}
+.section-title{font-size:1.6em;font-weight:800;color:var(--text);
+padding-bottom:12px;border-bottom:2px solid var(--border2);margin-bottom:28px;
+display:flex;align-items:center;gap:12px}
+.section-title .st-badge{font-size:0.5em;padding:3px 10px;border-radius:20px;
+font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:20px}
+.rule-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+padding:14px 16px}
+.rule-card .rule-id{font-family:monospace;font-size:0.78em;color:var(--accent);
+font-weight:700;margin-bottom:4px}
+.rule-card .rule-text{color:var(--text);font-size:0.88em;line-height:1.5}
+.rule-card .rule-why{color:var(--text2);font-size:0.8em;margin-top:6px;font-style:italic}
+.rule-card.gold{border-left:3px solid var(--jenny)}
+.rule-card.backend{border-left:3px solid var(--nen-em)}
+.rule-card.frontend{border-left:3px solid var(--nen-e)}
+.rule-card.security{border-left:3px solid var(--danger)}
+
+.code-block{background:#0d0d16;border:1px solid var(--border);border-radius:10px;
+padding:20px;margin:12px 0;overflow-x:auto}
+.code-block pre{font-family:'JetBrains Mono','Courier New',monospace;
+font-size:0.82em;color:var(--code);line-height:1.7;white-space:pre}
+.code-label{font-size:0.72em;color:var(--text2);font-family:monospace;
+margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+
+.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.88em}
+.data-table th{background:var(--surface2);padding:10px 14px;text-align:left;
+color:var(--text);font-weight:600;border-bottom:1px solid var(--border2)}
+.data-table td{padding:8px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:rgba(255,255,255,0.02)}
+.data-table code{background:var(--surface2);padding:1px 5px;border-radius:3px;
+font-size:0.9em;color:var(--code)}
+
+.db-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+margin-bottom:20px;overflow:hidden}
+.db-card-header{padding:14px 20px;background:rgba(245,158,11,0.06);
+border-bottom:1px solid var(--border);border-left:4px solid var(--jenny);
+font-weight:700;font-size:1em;display:flex;align-items:center;gap:10px}
+.db-card-header code{font-size:0.85em;color:var(--jenny)}
+.db-card-body{padding:16px 20px}
+
+.sys-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+margin-bottom:16px;overflow:hidden}
+.sys-card-header{padding:14px 20px;border-bottom:1px solid var(--border);
+font-weight:700;font-size:1em;display:flex;align-items:center;gap:10px}
+.sys-card.nen .sys-card-header{border-left:4px solid var(--accent);background:rgba(124,58,237,0.05)}
+.sys-card.mvp .sys-card-header{border-left:4px solid var(--jenny);background:rgba(245,158,11,0.06)}
+.sys-card.pos .sys-card-header{border-left:4px solid var(--nen-e);background:rgba(21,128,61,0.05)}
+.sys-card.bounty .sys-card-header{border-left:4px solid var(--bounty);background:rgba(239,68,68,0.05)}
+.sys-card.dark .sys-card-header{border-left:4px solid var(--dark-border,#4a0080);background:rgba(74,0,128,0.05)}
+.sys-card-body{padding:16px 20px}
+
+.sprint{border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.sprint-header{padding:12px 20px;background:var(--surface2);font-weight:700;
+display:flex;justify-content:space-between;align-items:center}
+.sprint-body{padding:16px 20px}
+.sprint-item{display:flex;align-items:flex-start;gap:10px;padding:6px 0;
+border-bottom:1px solid var(--border)}
+.sprint-item:last-child{border-bottom:none}
+.sprint-check{width:16px;height:16px;border:1px solid var(--border2);
+border-radius:3px;margin-top:2px;flex-shrink:0}
+.sprint-item.mvp .sprint-check{border-color:var(--jenny)}
+.sprint-badge{font-size:0.7em;padding:2px 6px;border-radius:4px;font-weight:700}
+.badge-mvp{background:rgba(245,158,11,0.2);color:var(--jenny)}
+.badge-db{background:rgba(245,158,11,0.1);color:var(--jenny)}
+.badge-php{background:rgba(124,58,237,0.2);color:var(--accent)}
+.badge-js{background:rgba(233,196,106,0.2);color:#b89a3a}
+.badge-css{background:rgba(29,78,216,0.2);color:var(--nen-em)}
+.badge-tpl{background:rgba(42,157,143,0.2);color:var(--keep)}
+
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;
+font-size:0.72em;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-keep{background:rgba(42,157,143,0.2);color:var(--keep)}
+.badge-warn{background:rgba(233,196,106,0.2);color:#8a7520}
+.badge-danger{background:rgba(230,57,70,0.2);color:var(--danger)}
+
+.nen-pill{display:inline-block;padding:3px 10px;border-radius:20px;
+font-size:0.78em;font-weight:600;border:1px solid}
+.nen-pill.e{border-color:var(--nen-e);color:var(--nen-e);background:rgba(21,128,61,0.1)}
+.nen-pill.t{border-color:var(--nen-t);color:var(--nen-t);background:rgba(180,83,9,0.1)}
+.nen-pill.em{border-color:var(--nen-em);color:var(--nen-em);background:rgba(29,78,216,0.1)}
+.nen-pill.c{border-color:var(--nen-c);color:var(--nen-c);background:rgba(109,40,217,0.1)}
+.nen-pill.m{border-color:var(--nen-m);color:var(--nen-m);background:rgba(185,28,28,0.1)}
+.nen-pill.s{border-color:var(--nen-s);color:var(--nen-s);background:rgba(131,24,67,0.1)}
+
+.dir-tree{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.82em;
+color:var(--code);line-height:1.8;background:#0d0d16;padding:24px;
+border-radius:10px;border:1px solid var(--border);overflow-x:auto}
+.dir-tree .dir{color:var(--accent)}
+.dir-tree .file{color:var(--text2)}
+.dir-tree .important{color:var(--jenny);font-weight:700}
+.dir-tree .mvp-mark{color:var(--jenny)}
+
+.formula-box{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.3);
+border-radius:10px;padding:20px;margin:12px 0}
+.formula-box .formula-title{color:var(--accent);font-weight:700;margin-bottom:10px;font-size:0.9em}
+.formula-box code{color:var(--code);font-family:monospace}
+
+.callout{padding:14px 18px;border-radius:8px;margin:12px 0;font-size:0.88em}
+.callout.info{background:rgba(29,78,216,0.08);border-left:3px solid var(--nen-em)}
+.callout.warn{background:rgba(233,196,106,0.08);border-left:3px solid var(--warn)}
+.callout.danger{background:rgba(230,57,70,0.08);border-left:3px solid var(--danger)}
+.callout.gold{background:rgba(245,158,11,0.08);border-left:3px solid var(--jenny)}
+.callout strong{font-weight:700}
+
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px;background:var(--surface);border-radius:8px;margin:12px 0;font-size:0.85em}
+.flow-step{background:var(--surface2);border:1px solid var(--border);padding:4px 12px;border-radius:6px}
+.flow-arrow{color:var(--text3)}
+
+.adr-table{width:100%;border-collapse:collapse}
+.adr-table td,.adr-table th{padding:10px 14px;border-bottom:1px solid var(--border);
+font-size:0.87em;vertical-align:top}
+.adr-table th{background:var(--surface2);font-weight:600}
+.adr-id{font-family:monospace;color:var(--accent);font-weight:700}
+
+@media(max-width:768px){
+.header{padding:40px 16px}.container{padding:20px 16px}
+.rule-grid{grid-template-columns:1fr}.header h1{font-size:1.6em}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+ <h1>⚡ BIBLIA DEL SISTEMA — Hunter x Hunter RPG</h1>
+ <p class="sub">Construcción desde cero · Fuente única de verdad · Todo lo que no está aquí, no existe</p>
+ <div class="meta">
+  <div class="m nen"><div class="n">6</div><div class="l">tipos Nen<br>nativos</div></div>
+  <div class="m tables"><div class="n">20</div><div class="l">tablas DB<br>desde cero</div></div>
+  <div class="m rules"><div class="n">30+</div><div class="l">reglas B-* y F-*<br>obligatorias</div></div>
+  <div class="m sprints"><div class="n">7</div><div class="l">sprints<br>ordenados</div></div>
+ </div>
+</div>
+
+<nav class="nav">
+ <a href="#vision">1. Visión</a>
+ <a href="#estructura">2. Estructura</a>
+ <a href="#reglas">3. Reglas</a>
+ <a href="#db">4. Base de Datos</a>
+ <a href="#backend">5. Backend</a>
+ <a href="#frontend">6. Frontend</a>
+ <a href="#sistemas">7. Sistemas HxH</a>
+ <a href="#auditorias">8. Auditorías</a>
+ <a href="#sprints">9. Sprints</a>
+ <a href="#runbooks">10. Runbooks</a>
+ <a href="#adr">11. ADR</a>
+</nav>
+
+<div class="container">
+
+<!-- ==================== 1. VISION ==================== -->
+<div class="section" id="vision">
+<div class="section-title">🎯 1. Visión y Stack</div>
+
+<div class="callout gold"><strong>Objetivo:</strong> Foro de rol Hunter x Hunter sobre MyBB con módulo RPG custom (<code>game/</code>) que implementa mecánicas nativas del universo HxH — no adaptaciones de otro sistema.</div>
+
+<table class="data-table" style="margin-top:20px">
+<tr><th>Capa</th><th>Tecnología</th><th>Decisión</th></tr>
+<tr><td>CMS base</td><td><strong>MyBB</strong></td><td>Auth, sesiones, permisos, posts, hilos</td></tr>
+<tr><td>Backend</td><td><strong>PHP 8+</strong></td><td>Módulo <code>game/</code> sobre MyBB</td></tr>
+<tr><td>Base de datos</td><td><strong>MySQL</strong> vía <code>$db</code></td><td>Sin ORMs. Sin backends externos en prod (D001)</td></tr>
+<tr><td>CSS</td><td><strong>Vanilla CSS</strong></td><td>Un único archivo: <code>rpg_custom.css</code></td></tr>
+<tr><td>JS</td><td><strong>Vanilla ES6+</strong></td><td>Un archivo por feature en <code>jscripts/game/</code></td></tr>
+<tr><td>Templates</td><td><strong>MyBB templates</strong></td><td>Fuente en <code>front/templates/</code>, XML como artefacto</td></tr>
+<tr><td>Contratos</td><td><strong>OpenAPI 3.0</strong></td><td><code>packages/contracts/</code></td></tr>
+</table>
+
+<div style="margin-top:20px">
+<strong style="color:var(--text)">Principios de diseño:</strong>
+<div class="rule-grid" style="margin-top:12px">
+<div class="rule-card gold"><div class="rule-id">D001</div><div class="rule-text">MySQL vía <code>$db</code> de MyBB. Sin backends externos en prod.</div></div>
+<div class="rule-card gold"><div class="rule-id">D002</div><div class="rule-text">Ruta de módulo neutral: <code>game/</code> siempre.</div></div>
+<div class="rule-card gold"><div class="rule-id">D003</div><div class="rule-text">PHP orquesta. Lógica de negocio vive en <code>Application/Services</code>.</div></div>
+<div class="rule-card gold"><div class="rule-id">D004</div><div class="rule-text">Cero <code>style=</code> inline en templates. Cero <code>&lt;script&gt;</code> inline.</div></div>
+<div class="rule-card gold"><div class="rule-id">D005</div><div class="rule-text">Un endpoint AJAX por acción. Un archivo por endpoint.</div></div>
+<div class="rule-card gold"><div class="rule-id">D006</div><div class="rule-text">Cero valores HxH hardcodeados en lógica PHP. Todo desde <code>config/universe.php</code>.</div></div>
+</div>
+</div>
+</div>
+
+<!-- ==================== 2. ESTRUCTURA ==================== -->
+<div class="section" id="estructura">
+<div class="section-title">📁 2. Estructura de Directorios</div>
+<div class="dir-tree">
+FORO_HXH/<br>
+├── <span class="dir">back/forum/</span>                    <span style="color:var(--text3)">← MyBB docroot</span><br>
+│   ├── <span class="dir important">game/</span>                   <span style="color:var(--text3)">← Módulo RPG NÚCLEO</span><br>
+│   │   ├── <span class="dir">config/</span><br>
+│   │   │   ├── <span class="important">universe.php</span>       <span style="color:var(--text3)">← Constantes HxH (tipos Nen, moneda...)</span><br>
+│   │   │   └── <span class="file">gates.php</span>          <span style="color:var(--text3)">← Feature flags (Dark Continent lock)</span><br>
+│   │   ├── <span class="dir">src/</span><br>
+│   │   │   ├── <span class="dir">Domain/</span>            <span style="color:var(--text3)">← Entidades y reglas de negocio</span><br>
+│   │   │   │   ├── <span class="dir">Character/</span><br>
+│   │   │   │   ├── <span class="dir">Nen/</span>           <span style="color:var(--text3)">← PowerScore, estados</span><br>
+│   │   │   │   └── <span class="dir">Mission/</span><br>
+│   │   │   ├── <span class="dir">Application/</span><br>
+│   │   │   │   ├── <span class="dir">Services/</span>      <span style="color:var(--text3)">← NenService, MissionService...</span><br>
+│   │   │   │   └── <span class="dir">UseCases/</span>      <span style="color:var(--text3)">← CreateHatsu, AssignNenType...</span><br>
+│   │   │   └── <span class="dir">Shared/</span><br>
+│   │   │       └── <span class="file">StatScale.php</span>  <span style="color:var(--text3)">← Escalado de stats genérico</span><br>
+│   │   ├── <span class="dir">inc/</span>               <span style="color:var(--text3)">← Helpers de bajo nivel</span><br>
+│   │   │   ├── <span class="file">nen_helpers.php</span><br>
+│   │   │   ├── <span class="file">positioning_helpers.php</span><br>
+│   │   │   ├── <span class="file">bounty_helpers.php</span><br>
+│   │   │   ├── <span class="file">mission_helpers.php</span><br>
+│   │   │   └── <span class="file">helpers.php</span><br>
+│   │   ├── <span class="dir">ajax/</span>              <span style="color:var(--text3)">← Un archivo = una acción (B-EP-05)</span><br>
+│   │   │   ├── <span class="important mvp-mark">hatsu_create.php ⭐</span><br>
+│   │   │   ├── <span class="file">hatsu_update.php</span><br>
+│   │   │   ├── <span class="file">hatsu_list.php</span><br>
+│   │   │   ├── <span class="file">hatsu_staff_approve.php</span><br>
+│   │   │   ├── <span class="important">nen_type_discover.php</span><br>
+│   │   │   ├── <span class="file">nen_state_change.php</span><br>
+│   │   │   ├── <span class="file">positioning_adjust.php</span><br>
+│   │   │   ├── <span class="file">bounty_create.php</span><br>
+│   │   │   ├── <span class="file">bounty_claim.php</span><br>
+│   │   │   ├── <span class="file">mission_accept.php</span><br>
+│   │   │   ├── <span class="file">mission_complete.php</span><br>
+│   │   │   ├── <span class="file">license_grant.php</span><br>
+│   │   │   ├── <span class="file">group_create.php</span><br>
+│   │   │   ├── <span class="file">group_join.php</span><br>
+│   │   │   └── <span class="file">combat_resolve.php</span><br>
+│   │   ├── <span class="dir">public/</span>            <span style="color:var(--text3)">← Páginas del módulo</span><br>
+│   │   │   ├── <span class="important">ficha.php</span>          <span style="color:var(--text3)">← Ficha personaje (expediente)</span><br>
+│   │   │   ├── <span class="important mvp-mark">hatsu_workshop.php ⭐</span><br>
+│   │   │   ├── <span class="important">nen_test.php</span>       <span style="color:var(--text3)">← Test de Gyō</span><br>
+│   │   │   ├── <span class="file">nen_profile.php</span><br>
+│   │   │   ├── <span class="file">contratos.php</span><br>
+│   │   │   ├── <span class="file">bounties.php</span><br>
+│   │   │   ├── <span class="file">biblioteca.php</span><br>
+│   │   │   ├── <span class="file">grupos.php</span><br>
+│   │   │   ├── <span class="file">mapa.php</span><br>
+│   │   │   ├── <span class="important">dark_continent.php</span> <span style="color:var(--text3)">← Gate bloqueado</span><br>
+│   │   │   ├── <span class="file">npcs.php</span><br>
+│   │   │   ├── <span class="file">bootstrap.php</span>      <span style="color:var(--text3)">← Entrypoint del módulo</span><br>
+│   │   │   └── <span class="dir">staff/</span><br>
+│   │   │       ├── <span class="file">panel.php</span><br>
+│   │   │       ├── <span class="important">hatsu_review.php ⭐</span><br>
+│   │   │       ├── <span class="file">positioning_manage.php</span><br>
+│   │   │       ├── <span class="file">bounty_manage.php</span><br>
+│   │   │       ├── <span class="file">license_manage.php</span><br>
+│   │   │       ├── <span class="file">missions_manage.php</span><br>
+│   │   │       └── <span class="file">regions_manage.php</span><br>
+│   │   ├── <span class="dir">views/</span>             <span style="color:var(--text3)">← Parciales PHP</span><br>
+│   │   │   ├── <span class="dir">personaje/</span><br>
+│   │   │   │   ├── <span class="file">_header.php</span><br>
+│   │   │   │   ├── <span class="file">_stats.php</span><br>
+│   │   │   │   ├── <span class="file">_nen.php</span><br>
+│   │   │   │   ├── <span class="file">_positioning.php</span><br>
+│   │   │   │   ├── <span class="file">_missions.php</span><br>
+│   │   │   │   ├── <span class="file">_inventory.php</span><br>
+│   │   │   │   ├── <span class="file">_license.php</span><br>
+│   │   │   │   └── <span class="file">_bounty.php</span><br>
+│   │   │   └── <span class="dir">grupo/</span><br>
+│   │   └── <span class="dir">sql/</span><br>
+│   │       ├── <span class="dir">migrations/</span>    <span style="color:var(--text3)">← Numeradas: 001_, 002_...</span><br>
+│   │       └── <span class="dir">seeds/</span>         <span style="color:var(--text3)">← Idempotentes</span><br>
+│   ├── <span class="dir">jscripts/game/</span>         <span style="color:var(--text3)">← JS por feature — sin frameworks</span><br>
+│   │   ├── <span class="file">sidebar.js</span><br>
+│   │   ├── <span class="file">nen_test.js</span><br>
+│   │   ├── <span class="important mvp-mark">hatsu_builder.js ⭐</span><br>
+│   │   ├── <span class="file">nen_state.js</span><br>
+│   │   ├── <span class="file">positioning.js</span><br>
+│   │   ├── <span class="file">combat.js</span><br>
+│   │   ├── <span class="file">missions.js</span><br>
+│   │   ├── <span class="file">dark_continent.js</span><br>
+│   │   └── <span class="file">notifications.js</span><br>
+│   ├── <span class="important">rpg_custom.css</span>         <span style="color:var(--text3)">← ⚠ ÚNICO CSS custom</span><br>
+│   └── <span class="dir">inc/plugins/</span><br>
+│       └── <span class="file">game_postcharacter.php</span> <span style="color:var(--text3)">← Hook posts MyBB</span><br>
+├── <span class="dir">front/templates/</span>           <span style="color:var(--text3)">← FUENTE de plantillas (nunca editar XML)</span><br>
+├── <span class="dir">packages/contracts/</span>        <span style="color:var(--text3)">← OpenAPI + schemas</span><br>
+├── <span class="dir">docs/</span><br>
+│   ├── <span class="important">BIBLIA_SISTEMA.md</span>      <span style="color:var(--text3)">← Este documento</span><br>
+│   └── <span class="dir">runbooks/</span><br>
+├── <span class="dir">tools/</span>                     <span style="color:var(--text3)">← Scripts de auditoría</span><br>
+└── <span class="dir">.agents/AGENTS.md</span>          <span style="color:var(--text3)">← Reglas operativas del repo</span><br>
+</div>
+</div>
+
+<!-- ==================== 3. REGLAS ==================== -->
+<div class="section" id="reglas">
+<div class="section-title">📏 3. Reglas de Oro</div>
+
+<h3 style="color:var(--nen-em);margin-bottom:14px;margin-top:8px">🔵 Backend (B-*)</h3>
+<div class="rule-grid">
+<div class="rule-card gold"><div class="rule-id">B-ORO-01</div><div class="rule-text">PHP solo orquesta. Lógica de negocio en <code>src/Application/</code></div><div class="rule-why">Testable, sin duplicación</div></div>
+<div class="rule-card gold"><div class="rule-id">B-ORO-02</div><div class="rule-text">Toda mecánica accede a DB exclusivamente via <code>$db</code> de MyBB</div><div class="rule-why">D001 — sin backends externos</div></div>
+<div class="rule-card gold"><div class="rule-id">B-ORO-03</div><div class="rule-text">Nuevo endpoint AJAX: OpenAPI schema en <code>packages/contracts/endpoints/</code> + ejemplo</div><div class="rule-why">Trazabilidad</div></div>
+<div class="rule-card gold"><div class="rule-id">B-ORO-04</div><div class="rule-text">Rutas: <code>game/</code>, <code>game/ajax/*</code>, <code>game/public/*</code>. JS en <code>jscripts/game/</code></div><div class="rule-why">D002 — naming neutro</div></div>
+<div class="rule-card gold"><div class="rule-id">B-ORO-05</div><div class="rule-text"><code>endif;</code> / <code>endforeach;</code> en vistas PHP mezcladas con HTML</div><div class="rule-why">Legibilidad</div></div>
+<div class="rule-card gold"><div class="rule-id">B-ORO-06</div><div class="rule-text">Cero valores HxH hardcodeados en lógica PHP. Todo desde <code>config/universe.php</code></div><div class="rule-why">D006 — configurabilidad</div></div>
+<div class="rule-card backend"><div class="rule-id">B-EP-01</div><div class="rule-text">Cada endpoint AJAX valida CSRF antes de cualquier acción</div><div class="rule-why">Seguridad</div></div>
+<div class="rule-card backend"><div class="rule-id">B-EP-02</div><div class="rule-text">Respuesta JSON estándar: <code>{ok: bool, data: ..., error: string}</code></div><div class="rule-why">Consistencia</div></div>
+<div class="rule-card backend"><div class="rule-id">B-EP-03</div><div class="rule-text">Cada endpoint verifica sesión MyBB activa</div><div class="rule-why">Seguridad</div></div>
+<div class="rule-card backend"><div class="rule-id">B-EP-05</div><div class="rule-text">Nuevo endpoint: entrypoint → UseCase → <code>$db</code> → OpenAPI + ejemplo</div><div class="rule-why">Orden</div></div>
+<div class="rule-card backend"><div class="rule-id">B-DAT-01</div><div class="rule-text">Tablas: prefijo <code>game_</code>. Columnas: <code>snake_case</code>. Sin ENUMs de valores temáticos</div><div class="rule-why">D006 — portabilidad</div></div>
+<div class="rule-card backend"><div class="rule-id">B-DAT-02</div><div class="rule-text">Migraciones numeradas: <code>sql/migrations/NNN_descripcion.sql</code>. Nunca alterar ya ejecutadas</div><div class="rule-why">Trazabilidad</div></div>
+<div class="rule-card backend"><div class="rule-id">B-DAT-03</div><div class="rule-text">Seeds idempotentes: <code>INSERT IGNORE</code> o <code>ON DUPLICATE KEY UPDATE</code></div><div class="rule-why">Seguridad en re-ejecución</div></div>
+<div class="rule-card security"><div class="rule-id">B-SEC-01</div><div class="rule-text">Todo input via <code>$db->escape_string()</code> antes de cualquier query</div><div class="rule-why">SQL injection</div></div>
+<div class="rule-card security"><div class="rule-id">B-SEC-02</div><div class="rule-text">Cero <code>eval()</code>, <code>system()</code>, <code>exec()</code> en el módulo</div><div class="rule-why">Seguridad</div></div>
+<div class="rule-card security"><div class="rule-id">B-SEC-03</div><div class="rule-text">Permisos via <code>is_member_of()</code> de MyBB, no flags propios</div><div class="rule-why">Consistencia</div></div>
+</div>
+
+<h3 style="color:var(--nen-e);margin-bottom:14px;margin-top:24px">🟢 Frontend (F-*)</h3>
+<div class="rule-grid">
+<div class="rule-card gold"><div class="rule-id">F-ORO-01</div><div class="rule-text">Templates: fuente canónica en <code>front/templates/**</code>. XML es artefacto. Nunca editar el XML a mano</div></div>
+<div class="rule-card gold"><div class="rule-id">F-ORO-02</div><div class="rule-text"><code>php front/diff_theme_source.php</code> → exit 0 antes de hacer sync</div></div>
+<div class="rule-card gold"><div class="rule-id">F-ORO-03</div><div class="rule-text">Sync: <code>python front/sync_theme_full.py</code> + <code>php front/validate_theme_security.php</code></div></div>
+<div class="rule-card frontend"><div class="rule-id">F-DS-01</div><div class="rule-text">Un único CSS custom: <code>rpg_custom.css</code>. Cero archivos CSS adicionales del módulo</div></div>
+<div class="rule-card frontend"><div class="rule-id">F-DS-02</div><div class="rule-text">Todos los colores, espaciados y tipografías como custom properties en <code>:root {}</code></div></div>
+<div class="rule-card frontend"><div class="rule-id">F-DS-03</div><div class="rule-text">Clases de botones: <code>.rpg-btn</code>, <code>.rpg-btn--primary</code>, <code>.rpg-btn--danger</code>. Nunca estilos ad-hoc</div></div>
+<div class="rule-card security"><div class="rule-id">F-GATE-01</div><div class="rule-text">Cero <code>style=""</code> inline en templates o vistas PHP</div></div>
+<div class="rule-card security"><div class="rule-id">F-GATE-02</div><div class="rule-text">Cero <code>&lt;script&gt;</code> inline en templates. Todo JS en <code>jscripts/game/*.js</code></div></div>
+<div class="rule-card frontend"><div class="rule-id">F-JS-01</div><div class="rule-text">Un archivo JS por feature. Nomenclatura: <code>{feature}.js</code></div></div>
+<div class="rule-card frontend"><div class="rule-id">F-JS-02</div><div class="rule-text">Vanilla ES6+. Sin jQuery en código nuevo</div></div>
+<div class="rule-card frontend"><div class="rule-id">F-JS-03</div><div class="rule-text">Backend comms via <code>fetch()</code> contra <code>game/ajax/*.php</code></div></div>
+<div class="rule-card frontend"><div class="rule-id">F-A11Y-01</div><div class="rule-text">Todo elemento interactivo tiene <code>id</code> único y descriptivo</div></div>
+</div>
+</div>
+
+<!-- ==================== 4. BASE DE DATOS ==================== -->
+<div class="section" id="db">
+<div class="section-title">🗄️ 4. Base de Datos — Schema Completo</div>
+
+<div class="callout info"><strong>Convenciones:</strong> Prefijo <code>game_</code> · Columnas <code>snake_case</code> · IDs <code>INT AUTO_INCREMENT PK</code> · Fechas <code>DATETIME DEFAULT CURRENT_TIMESTAMP</code> · ENUMs solo para estados técnicos, no valores temáticos</div>
+
+<div class="db-card"><div class="db-card-header">📋 <code>game_personajes</code> — Personajes (PJ)</div><div class="db-card-body">
+<div class="code-label">sql/migrations/001_create_core_tables.sql</div>
+<div class="code-block"><pre>CREATE TABLE game_personajes (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  mybb_uid        INT NOT NULL UNIQUE,
+  name            VARCHAR(200) NOT NULL,
+  age             TINYINT UNSIGNED DEFAULT 16,
+  height_cm       SMALLINT UNSIGNED DEFAULT 170,
+  weight_kg       TINYINT UNSIGNED DEFAULT 60,
+  -- Stats base (genéricos)
+  stat_strength   SMALLINT DEFAULT 10,   -- FUE
+  stat_resistance SMALLINT DEFAULT 10,   -- RES
+  stat_agility    SMALLINT DEFAULT 10,   -- AGI
+  stat_dexterity  SMALLINT DEFAULT 10,   -- DES
+  stat_intelligence SMALLINT DEFAULT 10, -- INT
+  stat_instinct   SMALLINT DEFAULT 10,   -- INST
+  stat_spirit     SMALLINT DEFAULT 10,   -- ESP
+  stat_points_available SMALLINT DEFAULT 0,
+  level           SMALLINT DEFAULT 1,
+  experience      INT DEFAULT 0,
+  exp_weekly      INT DEFAULT 0,
+  jenny           BIGINT DEFAULT 0,
+  rank            VARCHAR(5) DEFAULT 'D',
+  is_active       TINYINT(1) DEFAULT 1,
+  approved        TINYINT(1) DEFAULT 0,
+  approved_by     INT NULL,
+  approved_at     DATETIME NULL,
+  post_count      INT DEFAULT 0,
+  thread_count    INT DEFAULT 0,
+  mission_count   INT DEFAULT 0,
+  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at      DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_mybb (mybb_uid), INDEX idx_rank (rank)
+);</pre></div>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">⚡ <code>game_nen_progress</code> — Progresión del Nen</div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_nen_progress (
+  id                INT AUTO_INCREMENT PRIMARY KEY,
+  character_id      INT NOT NULL,
+  nen_type          VARCHAR(50) NOT NULL, -- desde config/universe.php
+  discovery_method  VARCHAR(20) DEFAULT 'random', -- 'random' | 'focused'
+  ten_level         TINYINT DEFAULT 0,  -- 0-10
+  zetsu_level       TINYINT DEFAULT 0,
+  ren_level         TINYINT DEFAULT 0,
+  hatsu_level       TINYINT DEFAULT 0,
+  total_exp         INT DEFAULT 0,
+  unlocked_at       DATETIME NULL,
+  UNIQUE KEY uq_char_nen (character_id),
+  FOREIGN KEY (character_id) REFERENCES game_personajes(id) ON DELETE CASCADE
+);</pre></div>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">🔄 <code>game_nen_state</code> — Estado táctico activo</div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_nen_state (
+  character_id    INT PRIMARY KEY,
+  active_state    VARCHAR(10) DEFAULT 'none',
+  -- 'none' | 'ten' | 'zetsu' | 'ren'
+  state_since     DATETIME NULL,
+  FOREIGN KEY (character_id) REFERENCES game_personajes(id) ON DELETE CASCADE
+);</pre></div>
+<table class="data-table" style="margin-top:12px">
+<tr><th>Estado</th><th>DEF mult</th><th>ATK mult</th><th>Detectable</th></tr>
+<tr><td>none</td><td>0.5</td><td>0.5</td><td>No</td></tr>
+<tr><td>ten</td><td>1.0</td><td>1.0</td><td>Distancia corta</td></tr>
+<tr><td>zetsu</td><td>0.0</td><td>0.8</td><td>No</td></tr>
+<tr><td>ren</td><td>1.2</td><td>1.3</td><td>Larga distancia</td></tr>
+</table>
+</div></div>
+
+<div class="db-card" style="border-left:2px solid var(--jenny)"><div class="db-card-header">⭐ <code>game_hatsu</code> + <code>game_hatsu_conditions</code> — MVP ABSOLUTO</div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_hatsu (
+  id                  INT AUTO_INCREMENT PRIMARY KEY,
+  character_id        INT NOT NULL,
+  name                VARCHAR(200) NOT NULL,
+  description         TEXT,
+  nen_type_primary    VARCHAR(50) NOT NULL,
+  nen_type_secondary  VARCHAR(50) DEFAULT NULL,
+  type_mix_pct        TINYINT DEFAULT 100, -- % tipo primario
+  conditions_count    TINYINT DEFAULT 0,
+  vow_text            TEXT NULL,
+  vow_active          TINYINT(1) DEFAULT 0,
+  vow_broken          TINYINT(1) DEFAULT 0,
+  vow_broken_at       DATETIME NULL,
+  power_score         INT DEFAULT 0,
+  power_score_raw     JSON NULL,     -- desglose del cálculo
+  approved            TINYINT(1) DEFAULT 0,
+  approved_by         INT NULL,
+  approved_at         DATETIME NULL,
+  reject_note         TEXT NULL,
+  is_active           TINYINT(1) DEFAULT 1,
+  created_at          DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (character_id) REFERENCES game_personajes(id) ON DELETE CASCADE
+);
+
+CREATE TABLE game_hatsu_conditions (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  hatsu_id        INT NOT NULL,
+  condition_text  TEXT NOT NULL,
+  condition_order TINYINT DEFAULT 0,
+  FOREIGN KEY (hatsu_id) REFERENCES game_hatsu(id) ON DELETE CASCADE
+);</pre></div>
+<div class="formula-box">
+<div class="formula-title">⚡ Fórmula power_score</div>
+<code>score = base * type_affinity * (1 + 0.15 * conditions) * (1.30 si voto activo) * (0.50 si voto roto)</code><br><br>
+<code>base = hatsu_level * 10 &nbsp; (0–100)</code><br>
+<code>type_affinity = 1.0 + ((stat_relevante - 10) / 180) &nbsp; (1.0–1.5)</code>
+</div>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">📊 <code>game_positioning</code> + <code>game_positioning_log</code> — Percepción social</div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_positioning (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  character_id    INT NOT NULL,
+  actor           VARCHAR(50) NOT NULL,
+  -- 'hunter_guild' | 'underworld' | 'assassins'
+  -- 'civilians' | 'kakin_royals' | 'chimera_remnants'
+  score           SMALLINT DEFAULT 0,  -- -100 a +100
+  label           VARCHAR(100) NULL,   -- auto-calculado
+  last_updated    DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_char_actor (character_id, actor)
+);
+
+CREATE TABLE game_positioning_log (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  character_id  INT NOT NULL,
+  actor         VARCHAR(50) NOT NULL,
+  delta         SMALLINT NOT NULL,
+  score_before  SMALLINT NOT NULL,
+  score_after   SMALLINT NOT NULL,
+  reason        TEXT NULL,
+  applied_by    INT NULL,
+  created_at    DATETIME DEFAULT CURRENT_TIMESTAMP
+);</pre></div>
+<table class="data-table" style="margin-top:12px">
+<tr><th>Score</th><th>Etiqueta (hunter_guild)</th></tr>
+<tr><td>+80 a +100</td><td>Cazador de Confianza Absoluta</td></tr>
+<tr><td>+40 a +79</td><td>Aliado Reconocido</td></tr>
+<tr><td>0 a +39</td><td>Desconocido</td></tr>
+<tr><td>-1 a -39</td><td>Sospechoso Vigilado</td></tr>
+<tr><td>-40 a -79</td><td>Objetivo de Eliminación</td></tr>
+<tr><td>-80 a -100</td><td>Enemigo Público</td></tr>
+</table>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">🏅 <code>game_hunter_license</code> · 💀 <code>game_bounties</code> · 👥 <code>game_groups</code></div><div class="db-card-body">
+<div class="code-block"><pre>-- LICENCIA (opcional, no por defecto)
+CREATE TABLE game_hunter_license (
+  character_id  INT PRIMARY KEY,
+  license_number VARCHAR(20) UNIQUE,
+  hunter_type   VARCHAR(30) DEFAULT 'rookie',
+  specialty     VARCHAR(100) NULL,
+  revoked       TINYINT(1) DEFAULT 0,
+  revoked_reason TEXT NULL,
+  issued_at     DATETIME NULL
+);
+
+-- BOUNTIES (precio por la cabeza, estilo HxH)
+CREATE TABLE game_bounties (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  target_char_id  INT NOT NULL,
+  posted_by       INT NULL,        -- NULL = Asociación de Cazadores
+  amount_jenny    BIGINT DEFAULT 0,
+  reason          TEXT,
+  is_visible      TINYINT(1) DEFAULT 1, -- 0 = info clasificada
+  capture_only    TINYINT(1) DEFAULT 0,
+  status          VARCHAR(20) DEFAULT 'active',
+  claimed_by      INT NULL,
+  expires_at      DATETIME NULL,
+  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- GRUPOS
+CREATE TABLE game_groups (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  name          VARCHAR(200) NOT NULL,
+  slug          VARCHAR(100) UNIQUE NOT NULL,
+  group_type    VARCHAR(30) DEFAULT 'independent',
+  description   TEXT,
+  max_members   TINYINT DEFAULT 13,
+  is_canon      TINYINT(1) DEFAULT 0,
+  is_active     TINYINT(1) DEFAULT 1,
+  created_at    DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE game_group_members (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  group_id      INT NOT NULL, character_id INT NOT NULL,
+  rank_in_group VARCHAR(100) NULL, member_number TINYINT NULL,
+  joined_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_group_member (group_id, character_id)
+);</pre></div>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">🗺️ <code>game_regions</code> · 📋 <code>game_missions</code> · 🎲 <code>game_oracles</code></div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_regions (
+  id                INT AUTO_INCREMENT PRIMARY KEY,
+  slug              VARCHAR(100) UNIQUE NOT NULL,
+  name              VARCHAR(200) NOT NULL,
+  description       TEXT,
+  tier              TINYINT DEFAULT 1,  -- 1-7 (7=Dark Continent)
+  locked            TINYINT(1) DEFAULT 0,
+  lock_message      VARCHAR(500) NULL,
+  requires_license  TINYINT(1) DEFAULT 0,
+  min_nen_level     TINYINT DEFAULT 0,
+  min_rank          VARCHAR(5) DEFAULT 'D'
+);
+
+CREATE TABLE game_missions (
+  id                  INT AUTO_INCREMENT PRIMARY KEY,
+  title               VARCHAR(300) NOT NULL,
+  description         TEXT,
+  mission_type        VARCHAR(30) DEFAULT 'hunt',
+  region_id           INT NULL,
+  min_rank            VARCHAR(5) DEFAULT 'D',
+  requires_license    TINYINT(1) DEFAULT 0,
+  reward_jenny        BIGINT DEFAULT 0,
+  reward_exp          INT DEFAULT 0,
+  max_participants    TINYINT DEFAULT 1,
+  status              VARCHAR(20) DEFAULT 'open',
+  expires_at          DATETIME NULL,
+  created_at          DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE game_mission_participants (
+  mission_id    INT NOT NULL, character_id INT NOT NULL,
+  accepted_at   DATETIME DEFAULT CURRENT_TIMESTAMP,
+  completed_at  DATETIME NULL, outcome VARCHAR(20) NULL,
+  UNIQUE KEY uq_mp (mission_id, character_id)
+);
+
+CREATE TABLE game_oracles (
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(200) NOT NULL,
+  oracle_type VARCHAR(50) DEFAULT 'event',
+  region_slug VARCHAR(100) NULL, tags_json JSON NULL, is_active TINYINT(1) DEFAULT 1
+);
+CREATE TABLE game_oracle_entries (
+  id        INT AUTO_INCREMENT PRIMARY KEY,
+  oracle_id INT NOT NULL, range_min TINYINT NOT NULL, range_max TINYINT NOT NULL,
+  result_text TEXT NOT NULL, result_effects JSON NULL, weight TINYINT DEFAULT 1,
+  FOREIGN KEY (oracle_id) REFERENCES game_oracles(id) ON DELETE CASCADE
+);</pre></div>
+</div></div>
+
+<div class="db-card"><div class="db-card-header">📦 Items · 🔔 Notificaciones · 📈 XP Log · ⚔️ Combat Log</div><div class="db-card-body">
+<div class="code-block"><pre>CREATE TABLE game_items (id INT AUTO_INCREMENT PK, name VARCHAR(200), description TEXT,
+  item_type VARCHAR(30) DEFAULT 'equipo', rarity VARCHAR(10) DEFAULT 'common',
+  effects_json JSON NULL, cost_jenny BIGINT DEFAULT 0);
+CREATE TABLE game_inventory (id INT AUTO_INCREMENT PK, character_id INT, item_id INT,
+  quantity TINYINT DEFAULT 1, equipped TINYINT(1) DEFAULT 0, slot VARCHAR(30) NULL);
+CREATE TABLE game_item_requests (id INT AUTO_INCREMENT PK, character_id INT, item_id INT NULL,
+  request_type VARCHAR(20) DEFAULT 'purchase', status VARCHAR(20) DEFAULT 'pending',
+  power_id INT NULL, notes TEXT, reviewed_by INT NULL, reject_note TEXT);
+
+CREATE TABLE game_npcs (id INT AUTO_INCREMENT PK, name VARCHAR(200), region_id INT NULL,
+  npc_type VARCHAR(30) DEFAULT 'generic', description TEXT, stats_json JSON NULL,
+  nen_type VARCHAR(50) NULL, is_canon TINYINT(1) DEFAULT 0);
+
+CREATE TABLE game_notifications (id INT AUTO_INCREMENT PK, character_id INT,
+  notif_type VARCHAR(50), title VARCHAR(200), message TEXT,
+  is_read TINYINT(1) DEFAULT 0, related_id INT NULL);
+
+CREATE TABLE game_xp_log (id INT AUTO_INCREMENT PK, character_id INT,
+  xp_gained INT, source_type VARCHAR(30), source_id INT NULL, notes TEXT);
+
+CREATE TABLE game_combat_log (id INT AUTO_INCREMENT PK, thread_id INT,
+  attacker_char_id INT, defender_char_id INT NULL, npc_id INT NULL,
+  nen_state_attacker VARCHAR(10), nen_state_defender VARCHAR(10),
+  roll_result JSON NULL, damage_dealt INT DEFAULT 0, damage_received INT DEFAULT 0,
+  xp_gained INT DEFAULT 0, outcome VARCHAR(20) NULL);</pre></div>
+</div></div>
+</div>
+
+<!-- ==================== 5. BACKEND ==================== -->
+<div class="section" id="backend">
+<div class="section-title">🐘 5. Backend PHP — Convenciones</div>
+
+<h3 style="color:var(--text);margin-bottom:14px">Patrón de endpoint AJAX</h3>
+<div class="flow">
+ <span class="flow-step">define IN_MYBB</span><span class="flow-arrow">→</span>
+ <span class="flow-step">require global.php</span><span class="flow-arrow">→</span>
+ <span class="flow-step">require bootstrap.php</span><span class="flow-arrow">→</span>
+ <span class="flow-step">header JSON</span><span class="flow-arrow">→</span>
+ <span class="flow-step">verificar sesión</span><span class="flow-arrow">→</span>
+ <span class="flow-step">verificar CSRF</span><span class="flow-arrow">→</span>
+ <span class="flow-step">verificar POST</span><span class="flow-arrow">→</span>
+ <span class="flow-step">obtener PJ</span><span class="flow-arrow">→</span>
+ <span class="flow-step">UseCase→execute()</span><span class="flow-arrow">→</span>
+ <span class="flow-step">json_encode resultado</span>
+</div>
+<div class="code-block"><pre>// game/ajax/hatsu_create.php
+define('IN_MYBB', 1);
+require_once dirname(__FILE__, 4) . '/global.php';
+require_once MYBB_ROOT . 'game/public/bootstrap.php';
+header('Content-Type: application/json');
+if (!$mybb->user['uid']) die(json_encode(['ok'=>false,'error'=>'No autenticado']));
+verify_post_check($mybb->get_input('my_post_key'));
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') die(json_encode(['ok'=>false,'error'=>'Solo POST']));
+$char = game_get_character_by_uid($mybb->user['uid']);
+if (!$char) die(json_encode(['ok'=>false,'error'=>'Sin personaje']));
+try {
+    $useCase = new CreateHatsuUseCase($db, $char);
+    $result  = $useCase->execute($mybb->input);
+    echo json_encode(['ok'=>true,'data'=>$result]);
+} catch (ValidationException $e) {
+    echo json_encode(['ok'=>false,'error'=>$e->getMessage()]);
+}</pre></div>
+
+<h3 style="color:var(--text);margin:20px 0 14px">config/universe.php — Fragmento clave</h3>
+<div class="code-block"><pre>define('CURRENCY_NAME',   'Jenny');
+define('CURRENCY_SYMBOL', '₾');
+define('NEN_TYPES', [
+  'enhancement'    => ['label'=>'Potenciación',    'color'=>'#15803d', 'roll_weight'=>30],
+  'transmutation'  => ['label'=>'Transmutación',   'color'=>'#b45309', 'roll_weight'=>20],
+  'emission'       => ['label'=>'Emisión',          'color'=>'#1d4ed8', 'roll_weight'=>15],
+  'conjuration'    => ['label'=>'Materialización', 'color'=>'#6d28d9', 'roll_weight'=>15],
+  'manipulation'   => ['label'=>'Manipulación',    'color'=>'#b91c1c', 'roll_weight'=>12],
+  'specialization' => ['label'=>'Especialización', 'color'=>'#831843', 'roll_weight'=>8],
+]);
+define('POSITIONING_ACTORS', [
+  'hunter_guild'     => ['label'=>'Asociación de Cazadores', 'color'=>'#15803d'],
+  'underworld'       => ['label'=>'Submundo Criminal',       'color'=>'#dc2626'],
+  'assassins'        => ['label'=>'Gremio de Asesinos',      'color'=>'#1e40af'],
+  'civilians'        => ['label'=>'Civiles',                 'color'=>'#64748b'],
+  'kakin_royals'     => ['label'=>'Familia Real Kakin',      'color'=>'#92400e'],
+  'chimera_remnants' => ['label'=>'Hormigas Quimera',        'color'=>'#065f46'],
+]);
+define('GATE_DARK_CONTINENT', false); // en config/gates.php</pre></div>
+</div>
+
+<!-- ==================== 6. FRONTEND ==================== -->
+<div class="section" id="frontend">
+<div class="section-title">🎨 6. Frontend — CSS, Templates, JS</div>
+
+<h3 style="color:var(--text);margin-bottom:14px">Tokens de diseño (:root en rpg_custom.css)</h3>
+<div class="code-block"><pre>:root {
+  /* BASE */
+  --hxh-bg:#09090f; --hxh-surface:#111119; --hxh-surface2:#1a1a27;
+  --hxh-border:#252535; --hxh-border2:#363650;
+  /* NEN — 6 tipos */
+  --nen-enhancement:#15803d;  --nen-transmutation:#b45309;
+  --nen-emission:#1d4ed8;     --nen-conjuration:#6d28d9;
+  --nen-manipulation:#b91c1c; --nen-specialization:#831843;
+  /* TEXTO */
+  --text-primary:#ededf5; --text-secondary:#7070a0; --text-accent:#a78bfa;
+  /* ESTADOS */
+  --state-ten:#15803d; --state-zetsu:#4a4a6a; --state-ren:#1d4ed8;
+  /* POSICIONAMIENTO */
+  --pos-trusted:#16a34a; --pos-neutral:#64748b; --pos-hostile:#dc2626;
+  /* DARK CONTINENT */
+  --dark-bg:#0d0010; --dark-border:#4a0080;
+  /* MONEDA y BOUNTY */
+  --jenny:#f59e0b; --bounty:#ef4444;
+  /* TIPOGRAFÍA */
+  --font-main:'Inter','Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono','Courier New',monospace;
+}</pre></div>
+
+<h3 style="color:var(--text);margin:20px 0 14px">Workflow de Templates</h3>
+<div class="flow">
+ <span class="flow-step">Editar .tpl en front/templates/</span><span class="flow-arrow">→</span>
+ <span class="flow-step">diff_theme_source.php (exit 0)</span><span class="flow-arrow">→</span>
+ <span class="flow-step">sync_theme_full.py</span><span class="flow-arrow">→</span>
+ <span class="flow-step">validate_theme_security.php</span><span class="flow-arrow">→</span>
+ <span class="flow-step">audit_frontend_metrics.py (exit 0)</span>
+</div>
+
+<h3 style="color:var(--text);margin:20px 0 14px">Patrón JS por feature</h3>
+<div class="code-block"><pre>// jscripts/game/hatsu_builder.js
+(function() {
+  'use strict';
+  const HatsuBuilder = {
+    state: { primaryType:null, conditions:[], vowActive:false },
+    init() { this.bindEvents(); this.updatePreview(); },
+    calculatePowerScore() {
+      const base     = parseInt(document.getElementById('char-hatsu-level').value) * 10;
+      const condMult = 1 + (0.15 * this.state.conditions.length);
+      const vowMult  = this.state.vowActive ? 1.30 : 1.0;
+      return Math.round(base * condMult * vowMult);
+    },
+    updatePreview() {
+      const score = this.calculatePowerScore();
+      document.getElementById('hatsu-power-score').textContent = score;
+    },
+    async submit(e) {
+      e.preventDefault();
+      const r = await fetch('game/ajax/hatsu_create.php', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ my_post_key: postKey, ...this.state })
+      });
+      const data = await r.json();
+      if (data.ok) this.showSuccess(data.data);
+      else this.showError(data.error);
+    }
+  };
+  document.addEventListener('DOMContentLoaded', () => HatsuBuilder.init());
+})();</pre></div>
+</div>
+
+<!-- ==================== 7. SISTEMAS ==================== -->
+<div class="section" id="sistemas">
+<div class="section-title">🌿 7. Sistemas HxH — Especificaciones</div>
+
+<div class="sys-card nen">
+ <div class="sys-card-header">⚡ Sistema Nen — Tipos, Principios, Estados</div>
+ <div class="sys-card-body">
+  <p style="color:var(--text2);margin-bottom:14px">El Nen no se elige de un catálogo. Se descubre. Dos vías de obtener el tipo:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+   <div class="callout info"><strong>Vía Aleatoria</strong><br>Tirada ponderada según <code>roll_weight</code> de cada tipo en <code>universe.php</code>. Enhancement 30% → Specialization 8%.</div>
+   <div class="callout info"><strong>Vía Focalizada (Test de Gyō)</strong><br>8 preguntas narrativas. Las respuestas modifican los pesos. Componente aleatorio residual siempre presente.</div>
+  </div>
+  <p style="color:var(--text2);margin-bottom:10px">Tipos de Nen con afinidad de stat:</p>
+  <table class="data-table">
+  <tr><th>Tipo</th><th>Label</th><th>Stat afinidad</th><th>Roll weight</th></tr>
+  <tr><td><span class="nen-pill e">Enhancement</span></td><td>Potenciación</td><td>FUE (stat_strength)</td><td>30%</td></tr>
+  <tr><td><span class="nen-pill t">Transmutation</span></td><td>Transmutación</td><td>INST (stat_instinct)</td><td>20%</td></tr>
+  <tr><td><span class="nen-pill em">Emission</span></td><td>Emisión</td><td>ESP (stat_spirit)</td><td>15%</td></tr>
+  <tr><td><span class="nen-pill c">Conjuration</span></td><td>Materialización</td><td>INT (stat_intelligence)</td><td>15%</td></tr>
+  <tr><td><span class="nen-pill m">Manipulation</span></td><td>Manipulación</td><td>INT (stat_intelligence)</td><td>12%</td></tr>
+  <tr><td><span class="nen-pill s">Specialization</span></td><td>Especialización</td><td>ESP (stat_spirit)</td><td>8%</td></tr>
+  </table>
+ </div>
+</div>
+
+<div class="sys-card mvp">
+ <div class="sys-card-header">⭐ Hatsu Constructor — MVP ABSOLUTO</div>
+ <div class="sys-card-body">
+  <div class="callout gold" style="margin-bottom:16px"><strong>Prioridad máxima.</strong> Esto es lo que diferencia objetivamente del mercado. Ningún competidor tiene un sistema generativo de Hatsu con fórmula de power_score automatizada.</div>
+  <p style="color:var(--text2);margin-bottom:14px"><strong>Flujo completo:</strong></p>
+  <div class="flow">
+   <span class="flow-step">PJ tiene tipo Nen</span><span class="flow-arrow">→</span>
+   <span class="flow-step">hatsu_workshop.php</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Formulario (tipo+condiciones+voto)</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Preview power_score en tiempo real</span><span class="flow-arrow">→</span>
+   <span class="flow-step">hatsu_create.php (approved=0)</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Notif al staff</span><span class="flow-arrow">→</span>
+   <span class="flow-step">hatsu_review.php</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Aprobado → notif al PJ</span>
+  </div>
+  <div class="formula-box" style="margin-top:16px">
+   <div class="formula-title">⚡ Power Score Formula</div>
+   <code>score = (hatsu_level × 10) × type_affinity × (1 + 0.15 × num_conditions) × vow_mult</code><br><br>
+   <code>vow_mult: 1.30 si voto activo, 0.50 si voto roto</code><br>
+   <code>type_affinity: 1.0 + ((stat_relevante − 10) / 180) → rango 1.0 a ~1.5</code>
+  </div>
+  <p style="color:var(--text2);margin-top:14px"><strong>Condiciones:</strong> texto libre validado por staff. Cada condición activa sube el multiplicador. Son restricciones narrativas con consecuencias mecánicas reales.</p>
+  <p style="color:var(--text2);margin-top:8px"><strong>Votos:</strong> si el staff marca rotura de voto → <code>vow_broken=1</code> → power_score ×0.50 hasta restauración.</p>
+ </div>
+</div>
+
+<div class="sys-card pos">
+ <div class="sys-card-header">📊 Sistema de Posicionamiento — Vector de Percepción Social</div>
+ <div class="sys-card-body">
+  <p style="color:var(--text2);margin-bottom:14px">No hay facciones rígidas. Cada PJ tiene un score independiente por actor (-100 a +100). Las acciones en rol los modifican vía staff o eventos automáticos.</p>
+  <table class="data-table">
+  <tr><th>Actor</th><th>Color</th><th>Modificado por</th></tr>
+  <tr><td>hunter_guild</td><td style="color:var(--nen-e)">Verde</td><td>Misiones de Cazador, licencia, crímenes</td></tr>
+  <tr><td>underworld</td><td style="color:var(--danger)">Rojo</td><td>Contactos con mafia, traiciones, contratos ilegales</td></tr>
+  <tr><td>assassins</td><td style="color:var(--nen-em)">Azul</td><td>Asesinatos, contratos de eliminación</td></tr>
+  <tr><td>civilians</td><td style="color:var(--text2)">Gris</td><td>Daño colateral, rescates, comercio</td></tr>
+  <tr><td>kakin_royals</td><td style="color:var(--jenny)">Ámbar</td><td>Acciones en Kakin, guardias reales</td></tr>
+  <tr><td>chimera_remnants</td><td style="color:var(--keep)">Verde oscuro</td><td>Encuentros con Hormigas residuales</td></tr>
+  </table>
+ </div>
+</div>
+
+<div class="sys-card bounty">
+ <div class="sys-card-header">💀 Licencia de Cazador · Bounties · Grupos</div>
+ <div class="sys-card-body">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+   <div class="callout info"><strong>Licencia</strong><br>Opcional. No por defecto. Se concede tras Examen IC. Desbloquea misiones y zonas. Revocable por crímenes.</div>
+   <div class="callout warn"><strong>Bounties</strong><br>Contratos de captura. <code>posted_by=NULL</code> = Asociación. <code>is_visible=0</code> = PJ no sabe. Badge pulsante rojo en ficha si público.</div>
+   <div class="callout info"><strong>Grupos</strong><br>Phantom Troupe, Zoldyck, Mafia como seed. Grupos custom por staff. Member number para numerados.</div>
+  </div>
+ </div>
+</div>
+
+<div class="sys-card dark">
+ <div class="sys-card-header">🌑 Dark Continent — Gate de Endgame</div>
+ <div class="sys-card-body">
+  <div class="callout warn"><strong>Estado actual:</strong> <code>locked=1</code> en DB · <code>GATE_DARK_CONTINENT=false</code> en gates.php<br>Visible en mapa pero bloqueado. <code>dark_continent.php</code> devuelve pantalla dramática de acceso denegado con efecto visual oscuro. Se activa en el futuro cambiando el gate.</div>
+  <p style="color:var(--text2);margin-top:10px">Regiones (tier 1-7): <strong>Whale Island</strong> → <strong>Padokea</strong> → <strong>Yorknew</strong> → <strong>NGL</strong> → <strong>Monte Zoldyck / Greed Island</strong> → <strong>Kakin</strong> → <strong style="color:var(--dark-border,#a855f7)">Dark Continent ⛔</strong></p>
+ </div>
+</div>
+</div>
+
+
+<!-- ==================== 7.5 SISTEMA DE CARTAS ==================== -->
+<div class="sys-card mvp">
+ <div class="sys-card-header">🃏 Sistema de Cartas (Cards System) — Feature Completo</div>
+ <div class="sys-card-body">
+  <p style="color:var(--text2);margin-bottom:14px">El foro implementa un sistema de coleccionables y equipamiento basado en <strong>Cartas (Cards)</strong>. Cada carta representa una habilidad, un objeto, un don o un aliado menor, representado mediante su respectivo tipo en la columna <code>card_type</code>.</p>
+  
+  <h4 style="color:var(--text);margin-bottom:8px">Tipos de Cartas y Equivalencias:</h4>
+  <table class="data-table">
+  <tr><th>Tipo en DB (card_type)</th><th>Significado temático HxH</th><th>Funcionamiento Mecánico</th></tr>
+  <tr><td><code>tecnica</code></td><td>Técnica de Combate Común</td><td>Habilidades generales que cualquier personaje puede aprender (ej. estilos de artes marciales no Nen, sigilo básico, combate con armas). Otorga multiplicadores de ataque o defensa.</td></tr>
+  <tr><td><code>equipo</code></td><td>Equipamiento e Ítems</td><td>Armas (ej. espadas, kunais), armaduras o accesorios que ocupan un slot de inventario físico. Modifican directamente las estadísticas básicas (stat_strength, stat_resistance) del PJ.</td></tr>
+  <tr><td><code>nen_ability</code></td><td>Habilidad Nen (Hatsu Aprobado)</td><td>Representación en inventario de un Hatsu aprobado de la tabla <code>game_hatsu</code>. Al equiparla, se activa su modificador <code>power_score</code> y sus condiciones en combate. Requiere que el PJ posea el tipo Nen coincidente.</td></tr>
+  <tr><td><code>npc_menor</code></td><td>Aliados e Invocaciones</td><td>Invocaciones o contratos con NPCs de apoyo (ej. bestias mágicas domesticadas, informantes o mercenarios). Se pueden invocar en combate para realizar un ataque o proveer utilidad y luego entran en cooldown.</td></tr>
+  </table>
+
+  <h4 style="color:var(--text);margin-top:20px;margin-bottom:8px">Flujo de Asignación y Compra (Tienda de Cartas):</h4>
+  <div class="flow">
+   <span class="flow-step">PJ tiene Jenny suficiente</span><span class="flow-arrow">→</span>
+   <span class="flow-step">POST /ajax/cards_purchase.php</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Verifica stock e inventario libre</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Resta Jenny e inserta en game_inventory</span><span class="flow-arrow">→</span>
+   <span class="flow-step">Notificación de obtención</span>
+  </div>
+
+  <h4 style="color:var(--text);margin-top:20px;margin-bottom:8px">Slots de Equipamiento Limitados:</h4>
+  <p style="color:var(--text2);margin-bottom:10px">Un personaje no puede equipar infinitas cartas. Existen slots restringidos administrados en <code>game_inventory</code>:</p>
+  <ul>
+   <li><strong>Slot Armas (Main Hand / Off Hand):</strong> Máximo 2 cartas equipadas de tipo <code>equipo</code> que tengan tag de arma.</li>
+   <li><strong>Slot Armadura (Body / Accessory):</strong> Máximo 1 armadura + 2 accesorios.</li>
+   <li><strong>Slot de Habilidades (Nen / Técnicas):</strong> Espacio para equipar hasta 4 cartas de tipo <code>nen_ability</code> o <code>tecnica</code> simultáneamente en combate. Para equipar un Hatsu (<code>nen_ability</code>), el personaje debe estar en estado <strong>Ten</strong> o <strong>Ren</strong> (validado vía <code>nen_state_change.php</code>).</li>
+  </ul>
+  
+  <h4 style="color:var(--text);margin-top:20px;margin-bottom:8px">Efectos Dinámicos y serialización JSON:</h4>
+  <p style="color:var(--text2);margin-bottom:10px">La columna <code>effects_json</code> en la tabla <code>game_items</code> almacena un objeto JSON con los modificadores exactos que se aplican al portador. Ejemplo de payload:</p>
+  <div class="code-block" style="margin:0"><pre>{
+  "stat_modifiers": {
+    "stat_strength": 5,
+    "stat_agility": -2
+  },
+  " Nen_modifiers": {
+    "ren_bonus": 1
+  },
+  "combat_effects": {
+    "extra_damage_vs_beasts": 15
+  }
+}</pre></div>
+ </div>
+</div>
+
+<!-- ==================== 8. AUDITORIAS ==================== -->
+<div class="section" id="auditorias">
+<div class="section-title">🔍 8. Auditorías y Gates CI</div>
+
+<h3 style="color:var(--text);margin-bottom:14px">Checklist post-cambio Frontend</h3>
+<div class="code-block"><pre>php front/diff_theme_source.php        # exit 0 OBLIGATORIO antes de sync
+python front/sync_theme_full.py
+php front/validate_theme_security.php
+python tools/audit_frontend_metrics.py # exit 0 OBLIGATORIO
+
+# Gates que verifica la auditoría:
+# F-GATE-01: grep style= en templates → 0 ocurrencias
+# F-GATE-02: grep &lt;script&gt; en templates → 0 ocurrencias
+# F-DS-01: solo rpg_custom.css → sin otros CSS custom
+# F-DS-02: colores via var(--*) → 0 hardcodeados</pre></div>
+
+<h3 style="color:var(--text);margin:20px 0 14px">Checklist post-cambio Backend</h3>
+<div class="code-block"><pre>python tools/audit_backend_contracts.py # exit 0 OBLIGATORIO
+
+# Gates que verifica:
+# B-EP-03: cada ajax/*.php tiene schema en packages/contracts/endpoints/
+# B-DAT-02: migraciones numeradas secuencialmente sin gaps
+# B-SEC-01: inputs sin $db->escape_string() → 0
+# B-ORO-06: valores HxH hardcodeados en PHP → 0</pre></div>
+
+<h3 style="color:var(--text);margin:20px 0 14px">Gate de nomenclatura</h3>
+<div class="code-block"><pre># Verificar que no hay basura temática en el código
+grep -r "akuma\|haki\|berries\|pirata\|marine\|loguetown\|east_blue"   back/forum/game/ --include="*.php" | wc -l
+# Target: 0 siempre</pre></div>
+</div>
+
+<!-- ==================== 9. SPRINTS ==================== -->
+<div class="section" id="sprints">
+<div class="section-title">🚀 9. Sprints de Implementación</div>
+
+<div class="callout gold"><strong>Orden de construcción:</strong> DB Schema → Seeds → Helpers → UseCases → AJAX endpoints → Vistas PHP → CSS/JS → Templates. Siempre de abajo hacia arriba.</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 0 — Fundación</span><span style="color:var(--text2)">Días 1-2</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">CONFIG</span> <code>config/universe.php</code> + <code>config/gates.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PHP</span> <code>public/bootstrap.php</code> — entrypoint del módulo</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">DB</span> Migraciones 001-007 — todas las tablas</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">SEED</span> <code>seed_regions.sql</code> — 7 regiones HxH</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">SEED</span> <code>seed_groups.sql</code> — Phantom Troupe, Zoldyck, Mafia (canon)</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-css">CSS</span> <code>rpg_custom.css</code> — tokens de diseño base completos</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>sidebar.js</code> — sidebar flotante colapsable</div>
+ </div>
+</div>
+
+<div class="sprint" style="border-color:var(--jenny)">
+ <div class="sprint-header" style="background:rgba(245,158,11,0.08)"><span>⭐ Sprint 1 — Hatsu Constructor MVP</span><span style="color:var(--jenny)">Días 3-5 · MÁXIMA PRIORIDAD</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">PHP</span> <code>inc/nen_helpers.php</code> — <code>NenService::calculatePowerScore()</code></div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">YAML</span> <code>packages/contracts/endpoints/hatsu_create.yaml</code></div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/hatsu_create.php</code></div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/hatsu_update.php</code> · <code>hatsu_list.php</code> · <code>hatsu_staff_approve.php</code></div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/hatsu_workshop.php</code> — constructor de Hatsu</div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-php">STAFF</span> <code>public/staff/hatsu_review.php</code> — panel aprobación</div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>hatsu_builder.js</code> — preview power_score en tiempo real</div>
+  <div class="sprint-item mvp"><div class="sprint-check"></div><span class="sprint-badge badge-css">CSS</span> Estilos del builder (type grid, power bar, score display)</div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 2 — Nen Discovery + Estados</span><span style="color:var(--text2)">Días 6-7</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/nen_type_discover.php</code> — aleatorio + focalizado</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/nen_test.php</code> — test de Gyō (2 modos)</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>nen_test.js</code> — animación revelación de tipo</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/nen_state_change.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>nen_state.js</code> — botones Ten/Zetsu/Ren en ficha</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">VIEW</span> <code>views/personaje/_nen.php</code></div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 3 — Ficha de Personaje (Expediente)</span><span style="color:var(--text2)">Días 8-9</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/ficha.php</code> + todas las views parciales</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-tpl">TPL</span> Template <code>game_ficha</code> — diseño expediente HA</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-css">CSS</span> Estilos ficha, stats bars, licencia card, bounty badge</div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 4 — Posicionamiento + Bounties</span><span style="color:var(--text2)">Días 10-11</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PHP</span> <code>inc/positioning_helpers.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/positioning_adjust.php</code> + <code>bounty_create.php</code> + <code>bounty_claim.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/bounties.php</code> + <code>public/staff/bounty_manage.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>positioning.js</code> — barras de percepción</div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 5 — Misiones y Contratos</span><span style="color:var(--text2)">Días 12-13</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>ajax/mission_accept.php</code> + <code>mission_complete.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/contratos.php</code> + <code>public/staff/missions_manage.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">SEED</span> <code>seed_oracles.sql</code> — oráculos HxH (examen, Yorknew, NGL, Nen events)</div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 6 — Licencia, Grupos, Mapa, Dark Continent</span><span style="color:var(--text2)">Días 14-15</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">AJAX</span> <code>license_grant.php</code> + <code>group_create.php</code> + <code>group_join.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/grupos.php</code> + <code>public/mapa.php</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-php">PAGE</span> <code>public/dark_continent.php</code> — gate dramático</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-js">JS</span> <code>dark_continent.js</code> — efectos visuales oscuros</div>
+ </div>
+</div>
+
+<div class="sprint">
+ <div class="sprint-header"><span>Sprint 7 — Pulido, Auditorías, Deploy</span><span style="color:var(--text2)">Día 16</span></div>
+ <div class="sprint-body">
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">AUDIT</span> <code>python tools/audit_frontend_metrics.py</code> → exit 0</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">AUDIT</span> <code>python tools/audit_backend_contracts.py</code> → exit 0</div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-tpl">SYNC</span> <code>python front/sync_theme_full.py</code></div>
+  <div class="sprint-item"><div class="sprint-check"></div><span class="sprint-badge badge-db">QA</span> Smoke tests manuales completos</div>
+ </div>
+</div>
+</div>
+
+<!-- ==================== 10. RUNBOOKS ==================== -->
+<div class="section" id="runbooks">
+<div class="section-title">📖 10. Runbooks Operativos</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+<div class="sys-card nen">
+<div class="sys-card-header">Añadir endpoint AJAX</div>
+<div class="sys-card-body">
+<div class="code-block" style="margin:0"><pre>1. packages/contracts/endpoints/{nombre}.yaml
+2. game/ajax/{nombre}.php (patrón sección 5)
+3. Si modifica DB: nueva migración NNN_*.sql
+4. python tools/audit_backend_contracts.py</pre></div>
+</div>
+</div>
+
+<div class="sys-card nen">
+<div class="sys-card-header">Añadir página pública</div>
+<div class="sys-card-body">
+<div class="code-block" style="margin:0"><pre>1. game/public/{nombre}.php
+   Línea 1: define('IN_MYBB', 1);
+   Línea 2: require_once .../bootstrap.php;
+2. front/templates/game/{nombre}.tpl
+3. php front/diff_theme_source.php (exit 0)
+4. python front/sync_theme_full.py</pre></div>
+</div>
+</div>
+
+<div class="sys-card nen">
+<div class="sys-card-header">Añadir tabla</div>
+<div class="sys-card-body">
+<div class="code-block" style="margin:0"><pre>1. sql/migrations/NNN_create_{tabla}.sql
+2. Ejecutar en dev
+3. sql/seeds/seed_{tabla}.sql si aplica
+4. Documentar en BIBLIA_SISTEMA.md sección 4</pre></div>
+</div>
+</div>
+
+<div class="sys-card nen">
+<div class="sys-card-header">Añadir valor temático HxH</div>
+<div class="sys-card-body">
+<div class="code-block" style="margin:0"><pre>1. config/universe.php (NUNCA en lógica PHP)
+2. Si afecta DB: VARCHAR + config, NO ENUM
+3. Si afecta CSS: token en :root {} de rpg_custom.css
+4. python tools/audit_frontend_metrics.py</pre></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ==================== 11. ADR ==================== -->
+<div class="section" id="adr">
+<div class="section-title">📌 11. Decisiones de Arquitectura (ADR)</div>
+<table class="adr-table">
+<tr><th>ID</th><th>Decisión</th><th>Razón</th></tr>
+<tr><td class="adr-id">D001</td><td>MySQL vía <code>$db</code> MyBB. Sin ORMs ni backends externos en prod</td><td>Simplicidad, hosting estándar MyBB</td></tr>
+<tr><td class="adr-id">D002</td><td>Rutas de módulo: <code>game/</code> (nombre neutro siempre)</td><td>Reutilizable, sin acoplamiento temático</td></tr>
+<tr><td class="adr-id">D003</td><td>PHP orquesta; lógica en <code>Application/Services</code></td><td>Testabilidad, separación de responsabilidades</td></tr>
+<tr><td class="adr-id">D004</td><td>Sin valores HxH hardcodeados en PHP — todo via <code>config/universe.php</code></td><td>Mantenibilidad, un punto de cambio</td></tr>
+<tr><td class="adr-id">D005</td><td>Sin ENUMs de valores temáticos en DB schema — VARCHAR + config</td><td>Flexibilidad sin ALTER TABLE</td></tr>
+<tr><td class="adr-id">D006</td><td>Un único <code>rpg_custom.css</code>. Sin archivos CSS adicionales</td><td>Simplicidad de deploy y mantenimiento</td></tr>
+<tr><td class="adr-id">D007</td><td>Hatsu Constructor como MVP absoluto</td><td>Ventaja competitiva única — imposible de clonar desde arquitectura OP</td></tr>
+<tr><td class="adr-id">D008</td><td>Posicionamiento vectorial (6 actores) en lugar de facciones rígidas</td><td>Fidelidad al lore HxH — la afiliación en HxH es fluida</td></tr>
+<tr><td class="adr-id">D009</td><td>Licencia de Cazador opcional, no por defecto</td><td>No todos los PJs son Cazadores — asesinos, mafia, civiles existen</td></tr>
+<tr><td class="adr-id">D010</td><td>Dark Continent: visible pero bloqueado por <code>GATE_DARK_CONTINENT=false</code></td><td>Endgame progresivo sin romper la UI actual</td></tr>
+<tr><td class="adr-id">D011</td><td>JS vanilla ES6+, sin jQuery en código nuevo</td><td>Modernidad, independencia, un archivo por feature</td></tr>
+<tr><td class="adr-id">D012</td><td>Sidebar flotante colapsable con estado en <code>localStorage</code></td><td>UX moderna sin frameworks</td></tr>
+<tr><td class="adr-id">D013</td><td>Navegación RPG estándar de MyBB conservada como base</td><td>No romper lo que funciona — sidebar es complementario</td></tr>
+</table>
+</div>
+
+</div>
+
+<footer style="background:var(--surface);border-top:1px solid var(--border);padding:24px;text-align:center;color:var(--text2);font-size:0.82em">
+ BIBLIA DEL SISTEMA — Hunter x Hunter RPG Foro · Versión 1.0 · Todo lo que no está aquí, no existe
+</footer>
+
+</body>
+</html>

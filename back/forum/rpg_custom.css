@@ -1,0 +1,87 @@
+/**
+ * RPG CUSTOM STYLESHEET - HUNTER X HUNTER RPG
+ * 
+ * Regla F-DS-01: Un único CSS custom. Cero archivos CSS adicionales del módulo.
+ * Regla F-DS-02: Todos los colores, espaciados y tipografías como custom properties en :root.
+ */
+
+:root {
+    /* --- COLOR PALETTE --- */
+    --hxh-bg: #09090f;
+    --hxh-surface: #111119;
+    --hxh-surface2: #1a1a27;
+    --hxh-surface3: #222234;
+    
+    --hxh-border: #252535;
+    --hxh-border2: #363650;
+    
+    --hxh-text: #ededf5;
+    --hxh-text2: #7070a0;
+    --hxh-text3: #4a4a6a;
+    
+    --hxh-accent: #a78bfa;
+    --hxh-accent2: #7c3aed;
+    
+    /* --- NEN TYPES NATIVE COLORS --- */
+    --hxh-nen-e: #15803d;   /* Potenciación (Green) */
+    --hxh-nen-t: #b45309;   /* Transmutación (Orange/Brown) */
+    --hxh-nen-em: #1d4ed8;  /* Emisión (Blue) */
+    --hxh-nen-c: #6d28d9;   /* Materialización (Purple) */
+    --hxh-nen-m: #b91c1c;   /* Manipulación (Red) */
+    --hxh-nen-s: #831843;   /* Especialización (Pink/Magenta) */
+
+    /* --- SPECIAL ELEMENTS --- */
+    --hxh-jenny: #f59e0b;
+    --hxh-bounty: #ef4444;
+    --hxh-dark: #0d0010;
+    
+    /* --- STATES / ALERTS --- */
+    --hxh-keep: #2a9d8f;
+    --hxh-warn: #e9c46a;
+    --hxh-danger: #e63946;
+}
+
+/* --- ESTILOS DE COMPONENTES CORE --- */
+
+/* Regla F-DS-03: Botones del módulo */
+.rpg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--hxh-border2);
+    background: var(--hxh-surface2);
+    color: var(--hxh-text);
+    text-decoration: none;
+}
+
+.rpg-btn:hover {
+    background: var(--hxh-surface3);
+    border-color: var(--hxh-accent);
+}
+
+.rpg-btn--primary {
+    background: var(--hxh-accent2);
+    border-color: var(--hxh-accent2);
+    color: #fff;
+}
+
+.rpg-btn--primary:hover {
+    background: var(--hxh-accent);
+    border-color: var(--hxh-accent);
+}
+
+.rpg-btn--danger {
+    background: var(--hxh-danger);
+    border-color: var(--hxh-danger);
+    color: #fff;
+}
+
+.rpg-btn--danger:hover {
+    opacity: 0.9;
+}
